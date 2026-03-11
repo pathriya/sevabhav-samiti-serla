@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us - Sevabhav Social Welfare Society Sherla</title>
+    <link rel="stylesheet" href="home.css">
+    <link rel="stylesheet" href="pages.css">
+</head>
+<body>
+    <!-- Upper Bar (Contact & Social) -->
+    <div class="upper-bar">
+        <div class="upper-bar-content">
+            <div class="contact-info">
+                <span class="contact-item">📞 +91- 9050093007</span>
+            </div>
+            <div class="org-title">Sevabhav Social Welfare Society Sherla</div>
+            <div class="social-icons">
+                <a href="https://facebook.com" target="_blank" title="Facebook">f</a>
+                <a href="https://instagram.com" target="_blank" title="Instagram">📷</a>
+                <a href="https://youtube.com" target="_blank" title="YouTube">▶️</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Navigation Bar (Sticky) -->
+    <header class="nav-bar">
+        <div class="nav-bar-content">
+            <div class="logo-name">
+                <img src="logo.jpeg" alt="Sevabhav Social Welfare Society Sherla Logo" class="logo">
+            </div>
+            <button class="menu-toggle" id="menuToggle" aria-label="Menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav-links" id="navLinks">
+                <a href="index.html">Home</a>
+                <a href="about_us.html">About Us</a>
+                <a href="our_work.html">Our Work</a>
+                <a href="contact_us.html">Contact Us</a>
+            </nav>
+            <button class="donate-btn" onclick="window.location.href='donate.html'">Donate Now</button>
+        </div>
+    </header>
+
+    <!-- Contact Section -->
+    <section class="page-section">
+        <div class="page-container">
+            <h1>Get In Touch</h1>
+            <p class="subtitle">We'd love to hear from you. Reach out to us with your queries, feedback, or if you'd like to join our mission.</p>
+
+            <!-- Contact Info Cards -->
+            <div class="contact-info-cards">
+                <div class="contact-card">
+                    <div class="icon">📞</div>
+                    <h3>Phone</h3>
+                    <p>+91-9050093007</p>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">✉️</div>
+                    <h3>Email</h3>
+                    <p></p>
+                </div>
+                <div class="contact-card">
+                    <div class="icon">🌍</div>
+                    <h3>Location</h3>
+                    <p>Sherla, Bhiwani, Haryana</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <!-- Contact Form -->
+            <h2 style="color: #2b6cb0; margin-top: 32px; margin-bottom: 20px; text-align: left;">Send us a Message</h2>
+            <form class="contact-form" onsubmit="handleSubmit(event)">
+                <div class="form-group">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name" placeholder="Enter your full name" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="Enter your email address" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" placeholder="Enter your contact number" pattern="[0-9]{10}" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="subject">Subject</label>
+                    <input type="text" id="subject" name="subject" placeholder="What would you like to discuss?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="message">Message</label>
+                    <textarea id="message" name="message" placeholder="Please share your message or inquiry in detail..." required></textarea>
+                </div>
+
+                <button type="submit" class="cta-btn primary" style="width: 100%; margin-top: 12px;">Send Message</button>
+            </form>
+
+            <div class="info-box" style="margin-top: 32px;">
+                <strong>⏱️ Response Time:</strong><br>
+                We typically respond to inquiries within 24-48 hours during business days. For urgent matters, please call us directly at +91-9050093007.
+            </div>
+
+            <div class="cta-buttons">
+                <button class="cta-btn primary" onclick="window.location.href='index.html'">Back to Home</button>
+                <a href="about_us.html" class="cta-btn secondary">Learn About Us</a>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navLinks = document.getElementById('navLinks');
+
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        // Close menu when a link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Handle form submission
+        function handleSubmit(event) {
+            event.preventDefault();
+            
+            const name = document.getElementById('name').value;
+            const email = document.getElementById('email').value;
+            const phone = document.getElementById('phone').value;
+            const subject = document.getElementById('subject').value;
+            const message = document.getElementById('message').value;
+
+            // Create mailto link
+            const mailtoLink = `mailto:?subject=${encodeURIComponent('Contact Form - ' + subject)}&body=${encodeURIComponent(`Name: ${name}\nEmail: ${email}\nPhone: ${phone}\n\nMessage:\n${message}`)}`;
+            
+            window.location.href = mailtoLink;
+            
+            // Reset form
+            event.target.reset();
+        }
+    </script>
+</body>
+</html>
